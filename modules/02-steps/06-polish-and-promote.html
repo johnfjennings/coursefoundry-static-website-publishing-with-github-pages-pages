@@ -1041,7 +1041,7 @@ Warning
 <!-- Render ```mermaid fenced code blocks that Quarto leaves as plain code -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var fenced = document.querySelectorAll('pre.sourceCode.mermaid');
+    var fenced = document.querySelectorAll('pre.mermaid:not(.mermaid-js), pre.sourceCode.mermaid');
     if (!fenced.length) return;
     function run() {
       mermaid.initialize({ startOnLoad: false, theme: 'dark' });
@@ -1054,7 +1054,7 @@ Warning
         div.textContent = text;
         if (wrapper.parentNode) wrapper.parentNode.replaceChild(div, wrapper);
       });
-      mermaid.run({ querySelector: '.mermaid' });
+      mermaid.run({ querySelector: 'div.mermaid' });
     }
     if (window.mermaid) {
       run();
